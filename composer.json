@@ -1,0 +1,13 @@
+{
+   "name":"systeacher v0.0",
+   "description": "TCC",
+   "autoload": {
+       "psr-4": {
+           "Application\\Model\\": "application/model",
+           "System\\Core\\": "system/core"
+       }
+   },
+   "require": {
+      "phpmailer/phpmailer": "^6.0"
+   }
+}

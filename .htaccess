@@ -1,0 +1,33 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine On
+
+   #controller
+   #RewriteCond %{REQUEST_FILENAME} !-f
+   #RewriteRule ^([a-z]*)/([a-z0-9_]*)/?$ index.php?controller=$1&action=$2
+
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteRule ^([a-z_]*)/([0-9a-z]*)/?$ index.php?controller=$1&action=$2
+
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteRule ^([a-z_]*)/([0-9a-z]*)/([0-9a-z]*)/?$ index.php?controller=$1&action=$2&action1=$3
+
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteRule ^([a-z_]*)?$ index.php?controller=$1
+
+   #remove .php
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+   #remove html
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+   #hide gets
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteRule ^(.*)$ /index.php?/$1 [L]
+</IfModule>
+
+ErrorDocument 403 //403.php
+ErrorDocument 404 //404.php
+ErrorDocument 500 //500.php
